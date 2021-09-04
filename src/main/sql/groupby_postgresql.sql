@@ -1,6 +1,6 @@
-DROP TABLE public.ch13;
+DROP TABLE public.ch15;
 
-CREATE TABLE public.ch13(
+CREATE TABLE public.ch15(
   "firstName" character varying(255) COLLATE pg_catalog."default",
   "lastName" character varying(255) COLLATE pg_catalog."default",
   "state" character(2) COLLATE pg_catalog."default",
@@ -13,10 +13,10 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.ch13
+ALTER TABLE public.ch15
   OWNER to postgres;
 
-INSERT INTO public.ch13("firstName", "lastName", "state", "quantity", "revenue", "timestamp") 
+INSERT INTO public.ch15("firstName", "lastName", "state", "quantity", "revenue", "timestamp") 
   VALUES 
     ('Jean Georges', 'Perrin', 'NC', 1, 300, to_timestamp(1551903533)),
     ('Jean Georges', 'Perrin', 'NC', 2, 120, to_timestamp(1551903567)),
@@ -34,6 +34,6 @@ SELECT
     SUM(quantity) AS sum_qty, 
     SUM(revenue) AS sum_rev, 
     AVG(revenue::numeric::float8) AS avg_rev 
-  FROM public.ch13 
+  FROM public.ch15
   GROUP BY ("firstName", "lastName", "state");
   
